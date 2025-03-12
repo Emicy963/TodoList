@@ -8,7 +8,6 @@ from .models import Todo
 class TodoListViews(ListView):
     model = Todo
 
-
 class TodoCreateView(CreateView):
     model = Todo
     fields = ["title", "deadline"]

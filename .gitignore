@@ -6,6 +6,7 @@ __pycache__/
 venv/
 
 # Configurações do Sistema
+*.db
 *.sqlite3
 *.log
 *.env
