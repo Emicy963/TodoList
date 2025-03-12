@@ -1,11 +1,7 @@
 from django.contrib import admin
 from django.urls import path, include
 from todos.views import TodoListViews, TodoCreateView, TodoUpdateView, TodoDeleteView, TodoCompleteView
-from todos.api import TodoViewSet
-from rest_framework.routers import DefaultRouter
-
-router = DefaultRouter()
-router.register('todos', TodoViewSet, basename='todo')
+from todos.api import TodoView, TodoDetailView, TodoCompleteAPI
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -15,5 +11,7 @@ urlpatterns = [
     path("delete/<int:pk>", TodoDeleteView.as_view(), name="todo_delete"),
     path("complete/<int:pk>", TodoCompleteView.as_view(), name="todo_complete"),
     # API urls
-    path('api', include(router.urls)),
+    path('api/todos/', TodoView.as_view()),
+    path('api/todos/<int:pk>', TodoDetailView.as_view()),
+    path('api/todos/complet/<int:pk>', TodoCompleteAPI.as_view()),
 ]
