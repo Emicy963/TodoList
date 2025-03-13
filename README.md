@@ -13,6 +13,7 @@ This Fullstack project is a **todos application** developed using the Django fra
 
 - **Django**: Backend framework used for managing models, views, and templates.
 - **Django Rest Framework**: Framework for creat API endpoints.
+- **MySQL**: Database used used in production or not.
 - **PostgreSQL**: Database used in production for reliable data storage.
 - **Bootstrap**: For responsive and modern design.
 - **HTML/CSS**: Template styling and structure.
@@ -25,6 +26,7 @@ Before running this project, ensure you have the following installed:
 - Python >= 3.9
 - pip (Python package manager)
 - PostgreSQL (for production database)
+- MySQL WorckBench (for production or not)
 
 
 ### 🛠️ Installation Steps
@@ -48,7 +50,7 @@ Before running this project, ensure you have the following installed:
 
 4. Set up the database:
     - Make sure PostgreSQL is running, and create a database for the project.
-    - Update the `DATABASES` configuration in the `settings.py` file to connect to your PostgreSQL instance.
+    - Update the `DATABASES` configuration in the `settings.py` file to connect to your PostgreSQL ou MySQL instance.
 
 5. Run database migrations:
     ```bash
@@ -77,7 +79,7 @@ SECRET_KEY=your_secret_key
 DEBUG=False
 ALLOWED_HOSTS=your_domain_or_ip
 DATABASE_URL=postgres://username:password@localhost:5432/your_db_name
-
+#DATABASE_URL=mysql://username:password@localhost:3306/your_db_name
 ```
 ## Usage
 
