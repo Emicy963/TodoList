@@ -22,8 +22,8 @@ class TodoCompleteAPI(APIView):
         except Todo.DoesNotExist:
             raise Http404
         
-    def get(self, request, pk):
+    def put(self, request, pk):
         todo = self.get_object(pk)
         todo.mark_has_complete()
         serializer = TodoSerializers(todo)
-        return Response(serializer.data, status=status.HTTP_202_ACCEPTED)
+        return Response(serializer.data, status=status.HTTP_200_OK)

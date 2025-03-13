@@ -1,4 +1,4 @@
-from datetime import date
+from django.utils import timezone
 from django.db import models
 
 
@@ -13,5 +13,5 @@ class Todo(models.Model):
 
     def mark_has_complete(self):
         if not self.finished_at:
-            self.finished_at = date.today()
+            self.finished_at = timezone.now()
             self.save()

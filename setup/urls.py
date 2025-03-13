@@ -1,5 +1,5 @@
 from django.contrib import admin
-from django.urls import path, include
+from django.urls import path
 from todos.views import TodoListViews, TodoCreateView, TodoUpdateView, TodoDeleteView, TodoCompleteView
 from todos.api import TodoView, TodoDetailView, TodoCompleteAPI
 
@@ -13,5 +13,5 @@ urlpatterns = [
     # API urls
     path('api/todos/', TodoView.as_view()),
     path('api/todos/<int:pk>', TodoDetailView.as_view()),
-    path('api/todos/complet/<int:pk>', TodoCompleteAPI.as_view()),
+    path('api/todos/complete/<int:pk>', TodoCompleteAPI.as_view()),
 ]
