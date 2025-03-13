@@ -66,7 +66,16 @@ WSGI_APPLICATION = 'setup.wsgi.application'
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
 DATABASES = {
-    'default': db_url(config("DATABASES", default=f"sqlite:///{BASE_DIR / "db.sqlite3"}"))
+    'default':{ 
+        **db_url(config("DATABASE_URL")),
+        'OPTIONS': {
+            'charset': 'utf8mb4',
+            'init_command': "SET sql_mode='STRICT_TRANS_TABLES', default_storage_engine=INNODB",
+            'connect_timeout': 5,
+        },
+        'TIME_ZONE': 'UTC',
+        'CONN_HEALTH_CHECKS': True
+    }
 }
 
 # Password validation
