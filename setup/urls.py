@@ -12,6 +12,6 @@ urlpatterns = [
     path("complete/<int:pk>", TodoCompleteView.as_view(), name="todo_complete"),
     # API urls
     path('api/todos/', TodoView.as_view()),
-    path('api/todos/<int:pk>', TodoDetailView.as_view()),
-    path('api/todos/complete/<int:pk>', TodoCompleteAPI.as_view()),
+    path('api/todo/<int:pk>', TodoDetailView.as_view()),
+    path('api/todo/complete/<int:pk>', TodoCompleteAPI.as_view()),
 ]
