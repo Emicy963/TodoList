@@ -17,11 +17,3 @@ class Todo(models.Model):
         if not self.finished_at:
             self.finished_at = timezone.now()
             self.save()
-
-class Profile(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
-    bio = models.CharField(verbose_name='Biografia', max_length=250)
-    todos = models.OneToOneField(Todo, on_delete=models.CASCADE)
-
-    def __str__(self):
-        return self.user.username
