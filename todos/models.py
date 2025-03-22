@@ -1,8 +1,10 @@
+from django.contrib.auth.models import User
 from django.utils import timezone
 from django.db import models
 
 
 class Todo(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
     title = models.CharField(verbose_name="Título", max_length=100, null=False, blank=False)
     created_at = models.DateTimeField(auto_now_add=True, null=False, blank=False)
     deadline = models.DateField(verbose_name="Data de Entrega", null=False, blank=False)
@@ -15,3 +17,11 @@ class Todo(models.Model):
         if not self.finished_at:
             self.finished_at = timezone.now()
             self.save()
+
+class Profile(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    bio = models.CharField(verbose_name='Biografia', max_length='2500')
+    todos = models.OneToOneField(Todo, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.user.username
