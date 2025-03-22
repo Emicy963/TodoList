@@ -1,6 +1,9 @@
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import login
 from django.shortcuts import render, redirect
+from django.contrib.auth.decorators import login_required
+from .models import Profile
+from .form import ProfileForm
 
 def register(request):
     if request.method=='POST':
@@ -12,3 +15,15 @@ def register(request):
     else:
         form = UserCreationForm()
         return render(request, 'user/register.html', {'form': form})
+    
+@login_required
+def profile(request):
+    profile = Profile.objects.get(user=request.user)
+    if request.method=='POST':
+        form = ProfileForm(request.POST, instance=profile)
+        if form.is_valid():
+            form.save()
+            return redirect('profile')
+    else:
+        form = ProfileForm(instance=profile)
+        return render(request, 'user/profile.html', {'form': form})
