@@ -5,7 +5,7 @@ from todos.api import TodoView, TodoDetailView, TodoCompleteAPI
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('auth/', include('users.urls')),
+    path('accounts/', include('users.urls')),
     path("", TodoListViews.as_view(), name="todo_list"),
     path("create", TodoCreateView.as_view(), name="todo_create"),
     path("update/<int:pk>", TodoUpdateView.as_view(), name="todo_update"),

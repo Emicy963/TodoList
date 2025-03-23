@@ -1,5 +1,5 @@
 from django.contrib.auth.forms import UserCreationForm
-from django.contrib.auth import login
+from django.contrib.auth import login, logout
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from .models import Profile
@@ -15,6 +15,10 @@ def register(request):
     else:
         form = UserCreationForm()
         return render(request, 'user/register.html', {'form': form})
+    
+def logout_view(request):
+    logout(request)
+    return redirect('login')
     
 @login_required
 def profile(request):
